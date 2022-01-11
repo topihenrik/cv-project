@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import uniqid from "uniqid";
 import Header from "./components/Header";
 import Editor from "./components/Editor"
@@ -17,8 +17,10 @@ function App() {
     additionalInfo: "",
   });
 
+
+
+  
   const [educationInfo, setEducationInfo] = useState({
-    datas: [],
     data: {
       schoolName: "",
       city: "",
@@ -28,8 +30,15 @@ function App() {
       to: "",
       additionalInfo: "",
       id: uniqid(),
+      id2: uniqid(),
     },
   });
+
+
+  const [educationDatas, setEducationDatas] = useState({
+    datas: {},
+  })
+
 
   const [experienceInfo, setExperienceInfo] = useState({
     datas: [],
@@ -45,6 +54,36 @@ function App() {
   });
 
 
+
+useEffect(() => {
+  console.log("Init render");
+  setEducationInfo({
+    data: {
+        ...educationInfo.data,
+    }
+  })
+
+  setEducationDatas({
+    datas: {
+      ...educationInfo.datas,
+      [educationInfo.data.id]: educationInfo.data,
+    },
+  })
+
+  setExperienceInfo({
+    datas: [
+      ...experienceInfo.datas,
+      experienceInfo.data,
+    ],
+    data: {
+      ...experienceInfo.data,
+    }
+  })
+},[]);
+
+
+
+
   return(
     <>
       <Header/>
@@ -54,11 +93,13 @@ function App() {
           setGeneralInfo={setGeneralInfo} 
           educationInfo={educationInfo} 
           setEducationInfo={setEducationInfo}
+          educationDatas={educationDatas}
+          setEducationDatas={setEducationDatas}
           experienceInfo={experienceInfo}
           setExperienceInfo={setExperienceInfo}/>
         <Result 
           generalInfo={generalInfo}
-          educationInfo={educationInfo}
+          educationInfo={educationDatas}
           experienceInfo={experienceInfo}/>
       </div>
       <Footer/>

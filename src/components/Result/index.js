@@ -28,10 +28,10 @@ function Result(props) {
                         <p>{generalInfo.additionalInfo===""?"Description":generalInfo.additionalInfo}</p>
                     </section>
                     <ul className="infoUl">
-                        {educationInfo.datas.map((data) => {
+                        {Object.keys(educationInfo.datas).map((data) => {
                             return(
-                            <section key={data.id} className="infoSection">
-                                <EducationResult educationInfo={data}/>
+                            <section key={educationInfo.datas[data].id} className="infoSection">
+                                <EducationResult educationInfo={educationInfo.datas[data]}/>
                             </section>)
                         })}
                     </ul>
