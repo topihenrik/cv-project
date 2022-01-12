@@ -65,7 +65,7 @@ function Experience(props) {
                 name="city"
                 value={experienceInfo.city}
                 onChange={handleChange}/>
-            <div>
+            <div className="fromtoBox">
                 <input 
                     className="inputStyle2" 
                     placeholder="From"

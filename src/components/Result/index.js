@@ -13,8 +13,8 @@ const Result = React.forwardRef((props, ref) => {
         <div className="resultBox">
             <div ref={ref} className="pdfBox">
                 <div className="info10">
-                    <h1>{(generalInfo.firstName===""?"FirstName":generalInfo.firstName) + " " + (generalInfo.lastName===""?"LastName":generalInfo.lastName)}</h1>
-                    <h2>{generalInfo.title===""?"Title":generalInfo.title}</h2>
+                    <h1 className="h1Name">{(generalInfo.firstName===""?"John":generalInfo.firstName) + " " + (generalInfo.lastName===""?"Doe":generalInfo.lastName)}</h1>
+                    <h2 className="h2Title">{generalInfo.title===""?"Title":generalInfo.title}</h2>
                 </div>
                 <div className="info20">
                     <div className="info21">

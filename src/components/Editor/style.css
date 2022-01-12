@@ -1,11 +1,14 @@
 .editorBox {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     border: 2px solid black;
     max-width: fit-content;
+    height: fit-content;
     margin: 30px;
     padding: 10px;
-
+    background-color: rgba(156, 156, 156, 0.3);
     box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
                 0 2px 4px rgba(0,0,0,0.07), 
                 0 4px 8px rgba(0,0,0,0.07), 
@@ -19,8 +22,25 @@
     flex-direction: column;
 }
 
+
+
+.informationTitleBox {
+    display: flex;
+    width: 100%;
+}
+
 .informationTitle {
+    font-family: "Montserrat-Bold";
     margin: 10px;
+}
+
+
+.inputStyle1, .inputStyle2, .inputStyle3 {
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    padding-left: 10px;
 }
 
 
@@ -31,12 +51,13 @@
 }
 
 .inputStyle2 {
-    width: 200px;
+    width: 220px;
     height: 30px;
     margin: 10px;
 }
 
 .inputStyle3 {
+    resize: vertical;
     width: 500px;
     height: 80px;
     margin: 10px;
@@ -44,6 +65,14 @@
 
 .inputStyle4 {
     margin: 10px;
+    width: fit-content;
+    font-family: "Montserrat-Regular";
+}
+
+.fromtoBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 
@@ -51,12 +80,63 @@
     display: flex;
     margin: 10px;
     height: 40px;
+    width: 515px;
     justify-content: center;
     align-items: center;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    font-family: "Montserrat-Bold";
+}
+
+.editorButton:hover {
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .editorUl {
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+
+.divBorder {
+    border-top: 1px solid black;
+    width: 515px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.actionBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    
+
+}
+
+#downloadBtn, #resetBtn {
+    width: 240px;
+    border: none;
+    border-radius: 5px;
+    font-family: "Montserrat-Bold";
+}
+
+#downloadBtn {
+    background-color: rgb(78, 217, 100);
+}
+
+#downloadBtn:hover {
+    background-color: rgb(66, 197, 86);
+}
+
+#resetBtn {
+    background-color: rgb(255, 58, 48);
+}
+
+#resetBtn:hover {
+    background-color: rgb(226, 47, 37);
 }

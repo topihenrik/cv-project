@@ -113,12 +113,37 @@ function Editor(props) {
     }
 
 
+    function handleDatasReset(e) {
+        setGeneralInfo({
+            firstName: "",
+            lastName: "",
+            title: "",
+            email: "",
+            phoneNumber: "",
+            address: "",
+            additionalInfo: "",
+            picture: "",
+        })
+        setEducationDatas({
+            datas: {},
+        })
+        setExperienceDatas({
+            datas: {},
+        })
+    }
+
+
     return(
         <div className="editorBox">
             <General 
                 generalInfo={generalInfo} 
                 setGeneralInfo={setGeneralInfo}/>
-            <h3 className="informationTitle">Education</h3>
+
+
+            <div className="divBorder"></div>
+            <div className="informationTitleBox">
+                <h3 className="informationTitle">Education</h3>
+            </div>
             <ul className="editorUl">
                 {Object.keys(educationDatas.datas).map((data) => {
                     return(
@@ -133,15 +158,12 @@ function Editor(props) {
                     )
                 })}
             </ul>
-
-            {/* <Education 
-                educationInfo={educationInfo} 
-                setEducationInfo={setEducationInfo}
-                setEducationDatas={setEducationDatas}/> */}
-
             <button className="editorButton" onClick={AddEducationSection}>Add</button>
-            
-            <h3 className="informationTitle">Experience</h3>
+
+            <div className="divBorder"></div>
+            <div className="informationTitleBox">
+                <h3 className="informationTitle">Experience</h3>
+            </div>
             <ul className="editorUl">
                 {Object.keys(experienceDatas.datas).map((data) => {
                     return(
@@ -156,15 +178,14 @@ function Editor(props) {
                     )
                 })}
             </ul>
+            <button className="editorButton" onClick={AddExperienceSection}>Add</button>
+            
 
-
-
-            {/* <Experience 
-                experienceInfo={experienceInfo}
-                setExperienceInfo={setExperienceInfo}/> */}
-
-        <button className="editorButton" onClick={AddExperienceSection}>Add</button>
-        <button className="editorButton" onClick={handlePrint}>Download PDF</button>
+            <div className="divBorder"></div>
+            <div className="actionBox">
+                <button className="editorButton" id="downloadBtn" onClick={handlePrint}>Download PDF</button>
+                <button className="editorButton" id="resetBtn" onClick={handleDatasReset}>Reset</button>
+            </div>
         </div>
     );
 

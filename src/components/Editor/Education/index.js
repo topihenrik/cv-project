@@ -67,7 +67,7 @@ function Education(props) {
                 name="subject"
                 value={educationInfo.subject}
                 onChange={handleChange}/>
-            <div>
+            <div className="fromtoBox">
                 <input 
                     className="inputStyle2" 
                     placeholder="From"
