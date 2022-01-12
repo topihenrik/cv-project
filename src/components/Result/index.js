@@ -27,6 +27,9 @@ function Result(props) {
                         <h3>Information</h3>
                         <p>{generalInfo.additionalInfo===""?"Description":generalInfo.additionalInfo}</p>
                     </section>
+                    <div className="educationBox1">
+                        <h3>Education</h3>
+                    </div>
                     <ul className="infoUl">
                         {Object.keys(educationInfo.datas).map((data) => {
                             return(

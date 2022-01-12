@@ -5,9 +5,7 @@ function EducationResult(props) {
     const {educationInfo} = props;
     return(
         <>
-            <div className="educationBox1">
-                <h3>Education</h3>
-            </div>
+            
             <div className="educationBox2">
                 <div className="educationBox2Time">
                     <p>{(educationInfo.from===""?"From":educationInfo.from) + " - " + (educationInfo.to===""?"To":educationInfo.to)}</p>

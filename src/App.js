@@ -21,18 +21,16 @@ function App() {
 
   
   const [educationInfo, setEducationInfo] = useState({
-    data: {
-      schoolName: "",
-      city: "",
-      degree: "",
-      subject: "",
-      from: "",
-      to: "",
-      additionalInfo: "",
-      id: uniqid(),
-      id2: uniqid(),
-    },
-  });
+    schoolName: "",
+    city: "",
+    degree: "",
+    subject: "",
+    from: "",
+    to: "",
+    additionalInfo: "",
+    id: uniqid(),
+    id2: uniqid(),
+});
 
 
   const [educationDatas, setEducationDatas] = useState({
@@ -58,15 +56,13 @@ function App() {
 useEffect(() => {
   console.log("Init render");
   setEducationInfo({
-    data: {
-        ...educationInfo.data,
-    }
+    ...educationInfo,
   })
 
   setEducationDatas({
     datas: {
-      ...educationInfo.datas,
-      [educationInfo.data.id]: educationInfo.data,
+      ...educationDatas.datas,
+      [educationInfo.id]: educationInfo,
     },
   })
 
