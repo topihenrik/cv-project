@@ -2,20 +2,15 @@ import React from "react";
 import "./style.css";
 
 function Experience(props) {
-    const {experienceInfo, setExperienceInfo, experienceDatas, setExperienceDatas, handleExperienceDeletion} = props;
+    const {idKey, experienceDatas, setExperienceDatas, handleExperienceDeletion} = props;
 
     function handleChange(e) {
         const value = e.target.value;
-        setExperienceInfo({
-            ...experienceInfo,
-            [e.target.name]: value,
-        });
-
         setExperienceDatas({
             datas: {
                 ...experienceDatas.datas,
-                [experienceInfo.id]: {
-                    ...experienceInfo,
+                [idKey]: {
+                    ...experienceDatas.datas[idKey],
                     [e.target.name]: value,
                 },
             },
@@ -30,21 +25,21 @@ function Experience(props) {
                 placeholder="Company name"
                 type="text"
                 name="companyName"
-                value={experienceInfo.companyName}
+                value={experienceDatas.datas[idKey].companyName}
                 onChange={handleChange}/>
             <input 
                 className="inputStyle1" 
                 placeholder="Position"
                 type="text"
                 name="position"
-                value={experienceInfo.position}
+                value={experienceDatas.datas[idKey].position}
                 onChange={handleChange}/>
             <input 
                 className="inputStyle1" 
                 placeholder="City"
                 type="text"
                 name="city"
-                value={experienceInfo.city}
+                value={experienceDatas.datas[idKey].city}
                 onChange={handleChange}/>
             <div className="fromtoBox">
                 <input 
@@ -52,14 +47,14 @@ function Experience(props) {
                     placeholder="From"
                     type="text"
                     name="from"
-                    value={experienceInfo.from}
+                    value={experienceDatas.datas[idKey].from}
                     onChange={handleChange}/>
                 <input 
                     className="inputStyle2" 
                     placeholder="To"
                     type="text"
                     name="to"
-                    value={experienceInfo.to}
+                    value={experienceDatas.datas[idKey].to}
                     onChange={handleChange}/>
             </div>
             <textarea 
@@ -67,12 +62,11 @@ function Experience(props) {
                 placeholder="Additional information"
                 type="text"
                 name="additionalInfo"
-                value={experienceInfo.additionalInfo}
+                value={experienceDatas.datas[idKey].additionalInfo}
                 onChange={handleChange}/>
-            {<button className="editorButton" value={experienceInfo.id} onClick={handleExperienceDeletion}>Remove</button>}
+            {<button className="editorButton" value={experienceDatas.datas[idKey].id} onClick={handleExperienceDeletion}>Remove</button>}
         </section>
     );
-
 }
 
 export default Experience;

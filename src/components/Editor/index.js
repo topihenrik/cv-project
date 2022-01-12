@@ -6,24 +6,10 @@ import Experience from "./Experience";
 import "./style.css";
 
 function Editor(props) {
-    const {generalInfo, setGeneralInfo, educationInfo, setEducationInfo, educationDatas, setEducationDatas, experienceInfo, setExperienceInfo, experienceDatas, setExperienceDatas, handlePrint} = props;
-
+    const {generalInfo, setGeneralInfo, educationDatas, setEducationDatas, experienceDatas, setExperienceDatas, handlePrint} = props;
 
     function AddEducationSection(e) {
         const uniqueId = uniqid();
-        const uniqueId2 = uniqid();
-        setEducationInfo({
-            schoolName: "",
-            city: "",
-            degree: "",
-            subject: "",
-            from: "",
-            to: "",
-            additionalInfo: "",
-            id: uniqueId,
-            id2: uniqueId2,
-        })
-
         setEducationDatas({
             datas: {
                 ...educationDatas.datas,
@@ -36,28 +22,15 @@ function Editor(props) {
                     to: "",
                     additionalInfo: "",
                     id: uniqueId,
-                    id2: uniqueId2,
+                    id2: uniqid(),
                 },
             }
         })
         
     }
 
-
     function AddExperienceSection(e) {
         const uniqueId = uniqid();
-        const uniqueId2 = uniqid();
-        setExperienceInfo({
-            companyName: "",
-            position: "",
-            city: "",
-            from: "",
-            to: "",
-            additionalInfo: "",
-            id: uniqueId,
-            id2: uniqueId2,
-        })
-
         setExperienceDatas({
             datas: {
                 ...experienceDatas.datas,
@@ -69,13 +42,12 @@ function Editor(props) {
                     to: "",
                     additionalInfo: "",
                     id: uniqueId,
-                    id2: uniqueId2,
+                    id2: uniqid(),
                 },
             }
         })
 
     }
-
 
     function handleEducationDeletion(e) {
         const value = e.target.value;
@@ -109,7 +81,6 @@ function Editor(props) {
         })
     }
 
-
     function handleDatasReset(e) {
         setGeneralInfo({
             firstName: "",
@@ -129,25 +100,22 @@ function Editor(props) {
         })
     }
 
-
     return(
         <div className="editorBox">
             <General 
                 generalInfo={generalInfo} 
                 setGeneralInfo={setGeneralInfo}/>
-
-
             <div className="divBorder"></div>
             <div className="informationTitleBox">
                 <h3 className="informationTitle">Education</h3>
             </div>
             <ul className="editorUl">
                 {Object.keys(educationDatas.datas).map((data) => {
+                    console.log(data);
                     return(
                         <section key={educationDatas.datas[data].id2} className="informationBox">
                             <Education 
-                                educationInfo={educationDatas.datas[data]} 
-                                setEducationInfo={setEducationInfo}
+                                idKey={data} 
                                 educationDatas={educationDatas}
                                 setEducationDatas={setEducationDatas}
                                 handleEducationDeletion={handleEducationDeletion}/>
@@ -166,8 +134,7 @@ function Editor(props) {
                     return(
                         <section key={experienceDatas.datas[data].id2} className="informationBox">
                             <Experience 
-                                experienceInfo={experienceDatas.datas[data]} 
-                                setExperienceInfo={setExperienceInfo}
+                                idKey={data} 
                                 experienceDatas={experienceDatas}
                                 setExperienceDatas={setExperienceDatas}
                                 handleExperienceDeletion={handleExperienceDeletion}/>
@@ -177,8 +144,8 @@ function Editor(props) {
             </ul>
             <button className="editorButton" onClick={AddExperienceSection}>Add</button>
             
-
             <div className="divBorder"></div>
+            
             <div className="actionBox">
                 <button className="editorButton" id="downloadBtn" onClick={handlePrint}>Download PDF</button>
                 <button className="editorButton" id="resetBtn" onClick={handleDatasReset}>Reset</button>

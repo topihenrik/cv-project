@@ -5,7 +5,7 @@ import ExperienceResult from "./ExperienceResult";
 import "./style.css";
 
 const Result = React.forwardRef((props, ref) => {
-    const {generalInfo, educationInfo, experienceInfo} = props;
+    const {generalInfo, educationDatas, experienceDatas} = props;
     return(
         <div className="resultBox">
             <div ref={ref} className="pdfBox">
@@ -32,10 +32,10 @@ const Result = React.forwardRef((props, ref) => {
                             <h3>Education</h3>
                         </div>
                         <ul className="infoUl">
-                            {Object.keys(educationInfo.datas).map((data) => {
+                            {Object.keys(educationDatas.datas).map((data) => {
                                 return(
-                                <section key={educationInfo.datas[data].id} className="infoSection">
-                                    <EducationResult educationInfo={educationInfo.datas[data]}/>
+                                <section key={educationDatas.datas[data].id} className="infoSection">
+                                    <EducationResult educationInfo={educationDatas.datas[data]}/>
                                 </section>)
                             })}
                         </ul>
@@ -43,10 +43,10 @@ const Result = React.forwardRef((props, ref) => {
                             <h3>Experience</h3>
                         </div>
                         <ul className="infoUl">
-                            {Object.keys(experienceInfo.datas).map((data) => {
+                            {Object.keys(experienceDatas.datas).map((data) => {
                                 return(
-                                <section key={experienceInfo.datas[data].id} className="infoSection">
-                                    <ExperienceResult experienceInfo={experienceInfo.datas[data]}/>
+                                <section key={experienceDatas.datas[data].id} className="infoSection">
+                                    <ExperienceResult experienceInfo={experienceDatas.datas[data]}/>
                                 </section>)
                             })}
                         </ul>
