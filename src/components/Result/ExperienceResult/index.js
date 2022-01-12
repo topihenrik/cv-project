@@ -6,9 +6,7 @@ function ExperienceResult(props) {
     const {experienceInfo} = props;
     return(
         <>
-            <div className="experienceBox1">
-                <h3>Experience</h3>
-            </div>
+            
             <div className="experienceBox2">
                 <div className="experienceBox2Time">
                     <p>{(experienceInfo.from===""?"From":experienceInfo.from) + " - " + (experienceInfo.to===""?"To":experienceInfo.to)}</p>

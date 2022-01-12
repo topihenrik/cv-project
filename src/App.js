@@ -15,6 +15,7 @@ function App() {
     phoneNumber: "",
     address: "",
     additionalInfo: "",
+    picture: "",
   });
 
 
@@ -39,17 +40,19 @@ function App() {
 
 
   const [experienceInfo, setExperienceInfo] = useState({
-    datas: [],
-    data: {
-      companyName: "",
-      position: "",
-      city: "",
-      from: "",
-      to: "",
-      additionalInfo: "",
-      id: uniqid(),
-    },
+    companyName: "",
+    position: "",
+    city: "",
+    from: "",
+    to: "",
+    additionalInfo: "",
+    id: uniqid(),
+    id2: uniqid(),
   });
+
+  const [experienceDatas, setExperienceDatas] = useState({
+    datas: {},
+  })
 
 
 
@@ -67,14 +70,17 @@ useEffect(() => {
   })
 
   setExperienceInfo({
-    datas: [
-      ...experienceInfo.datas,
-      experienceInfo.data,
-    ],
-    data: {
-      ...experienceInfo.data,
-    }
+    ...experienceInfo,
   })
+
+  setExperienceDatas({
+    datas: {
+      ...experienceDatas.datas,
+      [experienceInfo.id]: experienceInfo,
+    },
+  })
+
+
 },[]);
 
 
@@ -92,11 +98,13 @@ useEffect(() => {
           educationDatas={educationDatas}
           setEducationDatas={setEducationDatas}
           experienceInfo={experienceInfo}
-          setExperienceInfo={setExperienceInfo}/>
+          setExperienceInfo={setExperienceInfo}
+          experienceDatas={experienceDatas}
+          setExperienceDatas={setExperienceDatas}/>
         <Result 
           generalInfo={generalInfo}
           educationInfo={educationDatas}
-          experienceInfo={experienceInfo}/>
+          experienceInfo={experienceDatas}/> {/* Changed this line */}
       </div>
       <Footer/>
     </>

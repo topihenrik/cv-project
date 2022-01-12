@@ -1,28 +1,34 @@
 import React from "react";
+import { useEffect } from "react/cjs/react.development";
 import uniqid from "uniqid";
 import "./style.css";
 
 
 
 function Experience(props) {
-    const {experienceInfo, setExperienceInfo} = props;
+    const {experienceInfo, setExperienceInfo, experienceDatas, setExperienceDatas, handleExperienceDeletion} = props;
 
     function handleChange(e) {
         const value = e.target.value;
         setExperienceInfo({
-            datas: [
-                ...experienceInfo.datas,
-            ],
-            data: {
-                ...experienceInfo.data,
-                [e.target.name]: value,
-            }
-        })
+            ...experienceInfo,
+            [e.target.name]: value,
+        });
     }
 
 
+    useEffect(() => {
+        setExperienceDatas({
+            datas: {
+                ...experienceDatas.datas,
+                [experienceInfo.id]: experienceInfo,
+            },
+        });
+    }, [experienceInfo])
 
-    function addData() {
+
+
+    /* function addData() {
         setExperienceInfo({
             datas: [
                 ...experienceInfo.datas,
@@ -33,31 +39,31 @@ function Experience(props) {
                 id: uniqid(),
             }
         })
-    }
+    } */
 
     return(
         <section className="informationBox">
-            <h3 className="informationTitle">Experience</h3>
+            
             <input 
                 className="inputStyle1" 
                 placeholder="Company name"
                 type="text"
                 name="companyName"
-                value={experienceInfo.data.companyName}
+                value={experienceInfo.companyName}
                 onChange={handleChange}/>
             <input 
                 className="inputStyle1" 
                 placeholder="Position"
                 type="text"
                 name="position"
-                value={experienceInfo.data.position}
+                value={experienceInfo.position}
                 onChange={handleChange}/>
             <input 
                 className="inputStyle1" 
                 placeholder="City"
                 type="text"
                 name="city"
-                value={experienceInfo.data.city}
+                value={experienceInfo.city}
                 onChange={handleChange}/>
             <div>
                 <input 
@@ -65,14 +71,14 @@ function Experience(props) {
                     placeholder="From"
                     type="text"
                     name="from"
-                    value={experienceInfo.data.from}
+                    value={experienceInfo.from}
                     onChange={handleChange}/>
                 <input 
                     className="inputStyle2" 
                     placeholder="To"
                     type="text"
                     name="to"
-                    value={experienceInfo.data.to}
+                    value={experienceInfo.to}
                     onChange={handleChange}/>
             </div>
             <textarea 
@@ -80,9 +86,9 @@ function Experience(props) {
                 placeholder="Additional information"
                 type="text"
                 name="additionalInfo"
-                value={experienceInfo.data.additionalInfo}
+                value={experienceInfo.additionalInfo}
                 onChange={handleChange}/>
-            <button onClick={addData}>Add</button>
+            {<button className="editorButton" value={experienceInfo.id} onClick={handleExperienceDeletion}>Remove</button>}
         </section>
     );
 

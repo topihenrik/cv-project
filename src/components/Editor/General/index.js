@@ -13,6 +13,17 @@ function General(props) {
             [e.target.name]: value});
     }
 
+
+    function handleFileInput(e) {
+        const value = e.target.value;
+        console.log("It works?");
+        console.log(URL.createObjectURL(e.target.files[0]));
+        setGeneralInfo({
+            ...generalInfo,
+            [e.target.name]: URL.createObjectURL(e.target.files[0]),
+        });
+    }
+
     return(
         <section className="informationBox">
             <h3 className="informationTitle">General Information</h3>
@@ -65,6 +76,12 @@ function General(props) {
                 name="additionalInfo" 
                 value={generalInfo.additionalInfo}
                 onChange={handleChange}/>
+            <input
+                className="inputStyle4" 
+                type="file"
+                accept="image/png, image/jpeg" 
+                name="picture"
+                onChange={handleFileInput}/>
         </section>
     );
 }

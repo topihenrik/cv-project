@@ -59,7 +59,7 @@
     margin: 0;
 }
 
-.educationBox1 {
+.educationBox1, .experienceBox1 {
     margin: 10px;
 }
 
@@ -85,5 +85,6 @@
 
 .avatar {
     height: 200px;
+    width: 230px;
     margin-top: 10px;
 }

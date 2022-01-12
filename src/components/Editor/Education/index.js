@@ -6,7 +6,7 @@ import "./style.css";
 
 
 function Education(props) {
-    const {educationInfo, setEducationInfo, educationDatas, setEducationDatas, handleDeletion} = props;
+    const {educationInfo, setEducationInfo, educationDatas, setEducationDatas, handleEducationDeletion} = props;
 
     /* console.log(educationInfo); */
 
@@ -90,7 +90,7 @@ function Education(props) {
                 name="additionalInfo"
                 value={educationInfo.additionalInfo}
                 onChange={handleChange}></textarea>
-            <button className="editorButton" value={educationInfo.id} onClick={handleDeletion}>Remove</button> {/* Deletion */}
+            <button className="editorButton" value={educationInfo.id} onClick={handleEducationDeletion}>Remove</button> {/* Deletion */}
         </>
     );
 

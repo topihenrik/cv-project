@@ -15,7 +15,7 @@ function Result(props) {
             <div className="info20">
                 <div className="info21">
                     <section className="personalDetails">
-                        <img className="avatar" src={BlankAvatar} alt="Personal Avatar"/>
+                        <img className="avatar" src={(generalInfo.picture === "")?BlankAvatar:generalInfo.picture} alt="Personal Avatar"/>
                         <h3>Personal Details</h3>
                         <p>{generalInfo.address===""?"Address":generalInfo.address}</p>
                         <p>{generalInfo.phoneNumber===""?"Phone number":generalInfo.phoneNumber}</p>
@@ -38,14 +38,26 @@ function Result(props) {
                             </section>)
                         })}
                     </ul>
+                    <div className="experienceBox1">
+                        <h3>Experience</h3>
+                    </div>
                     <ul className="infoUl">
+                        {Object.keys(experienceInfo.datas).map((data) => {
+                            return(
+                            <section key={experienceInfo.datas[data].id} className="infoSection">
+                                <ExperienceResult experienceInfo={experienceInfo.datas[data]}/>
+                            </section>)
+                        })}
+                    </ul>
+
+                    {/* <ul className="infoUl">
                         {experienceInfo.datas.map((data) => {
                             return(
                             <section key={data.id} className="infoSection">
                                 <ExperienceResult experienceInfo={data}/>
                             </section>)
                         })}
-                    </ul>
+                    </ul> */}
                 </div>
             </div>
             

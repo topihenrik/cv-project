@@ -7,7 +7,7 @@ import "./style.css";
 import { useEffect } from "react/cjs/react.development";
 
 function Editor(props) {
-    const {generalInfo, setGeneralInfo, educationInfo, setEducationInfo, educationDatas, setEducationDatas, experienceInfo, setExperienceInfo} = props;
+    const {generalInfo, setGeneralInfo, educationInfo, setEducationInfo, educationDatas, setEducationDatas, experienceInfo, setExperienceInfo, experienceDatas, setExperienceDatas} = props;
 
 
     function AddEducationSection(e) {
@@ -35,9 +35,32 @@ function Editor(props) {
     }, [educationInfo])
 
 
+    function AddExperienceSection(e) {
+        setExperienceInfo({
+            companyName: "",
+            position: "",
+            city: "",
+            from: "",
+            to: "",
+            additionalInfo: "",
+            id: uniqid(),
+            id2: uniqid(),
+        })
+    }
+
+    useEffect(() => {
+        setExperienceDatas({
+            datas: {
+                ...experienceDatas.datas,
+                [experienceInfo.id]: experienceInfo,
+            }
+        })
+    }, [experienceInfo])
 
 
-    function handleDeletion(e) /* Deletion */ {
+
+
+    function handleEducationDeletion(e) /* Deletion */ {
         const value = e.target.value;
 
         console.log("Before filter:");
@@ -63,6 +86,32 @@ function Editor(props) {
         })
     }
 
+    function handleExperienceDeletion(e) /* Deletion */ {
+        const value = e.target.value;
+
+        console.log("Before filter:");
+        console.log(experienceDatas.datas);
+
+        const filteredDatas = Object.keys(experienceDatas.datas)
+        .filter(key => ![value].includes(key))
+        .reduce((obj, key) => {
+          obj[key] = experienceDatas.datas[key];
+          return obj;
+        }, {});
+
+
+        console.log("[educationDatas.datas] After filter:");
+        console.log(experienceDatas.datas);
+        console.log("[filteredDatas] After filter:");
+        console.log(filteredDatas);
+
+        setExperienceDatas({
+            datas: {
+                ...filteredDatas,
+            }
+        })
+    }
+
 
     return(
         <div className="editorBox">
@@ -79,7 +128,7 @@ function Editor(props) {
                                 setEducationInfo={setEducationInfo}
                                 educationDatas={educationDatas}
                                 setEducationDatas={setEducationDatas}
-                                handleDeletion={handleDeletion}/>
+                                handleEducationDeletion={handleEducationDeletion}/>
                         </section>
                     )
                 })}
@@ -92,14 +141,29 @@ function Editor(props) {
 
             <button className="editorButton" onClick={AddEducationSection}>Add</button>
             
+            <h3 className="informationTitle">Experience</h3>
+            <ul className="editorUl">
+                {Object.keys(experienceDatas.datas).map((data) => {
+                    return(
+                        <section key={experienceDatas.datas[data].id2} className="informationBox">
+                            <Experience 
+                                experienceInfo={experienceDatas.datas[data]} 
+                                setExperienceInfo={setExperienceInfo}
+                                experienceDatas={experienceDatas}
+                                setExperienceDatas={setExperienceDatas}
+                                handleExperienceDeletion={handleExperienceDeletion}/>
+                        </section>
+                    )
+                })}
+            </ul>
 
 
 
-
-
-            <Experience 
+            {/* <Experience 
                 experienceInfo={experienceInfo}
-                setExperienceInfo={setExperienceInfo}/>
+                setExperienceInfo={setExperienceInfo}/> */}
+
+        <button className="editorButton" onClick={AddExperienceSection}>Add</button>
         </div>
     );
 
