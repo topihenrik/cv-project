@@ -7,7 +7,7 @@ import "./style.css";
 import { useEffect } from "react/cjs/react.development";
 
 function Editor(props) {
-    const {generalInfo, setGeneralInfo, educationInfo, setEducationInfo, educationDatas, setEducationDatas, experienceInfo, setExperienceInfo, experienceDatas, setExperienceDatas} = props;
+    const {generalInfo, setGeneralInfo, educationInfo, setEducationInfo, educationDatas, setEducationDatas, experienceInfo, setExperienceInfo, experienceDatas, setExperienceDatas, handlePrint} = props;
 
 
     function AddEducationSection(e) {
@@ -164,6 +164,7 @@ function Editor(props) {
                 setExperienceInfo={setExperienceInfo}/> */}
 
         <button className="editorButton" onClick={AddExperienceSection}>Add</button>
+        <button className="editorButton" onClick={handlePrint}>Download PDF</button>
         </div>
     );
 

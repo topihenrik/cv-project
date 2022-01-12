@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import uniqid from "uniqid";
 import Header from "./components/Header";
 import Editor from "./components/Editor"
 import Result from "./components/Result";
 import Footer from "./components/Footer";
 import "./style.css";
+import { useReactToPrint } from "react-to-print";
+
+
 
 function App() {
   const [generalInfo, setGeneralInfo] = useState({
@@ -31,7 +34,7 @@ function App() {
     additionalInfo: "",
     id: uniqid(),
     id2: uniqid(),
-});
+  });
 
 
   const [educationDatas, setEducationDatas] = useState({
@@ -56,34 +59,38 @@ function App() {
 
 
 
-useEffect(() => {
-  console.log("Init render");
-  setEducationInfo({
-    ...educationInfo,
-  })
+  useEffect(() => {
+    console.log("Init render");
+    setEducationInfo({
+      ...educationInfo,
+    })
 
-  setEducationDatas({
-    datas: {
-      ...educationDatas.datas,
-      [educationInfo.id]: educationInfo,
-    },
-  })
+    setEducationDatas({
+      datas: {
+        ...educationDatas.datas,
+        [educationInfo.id]: educationInfo,
+      },
+    })
 
-  setExperienceInfo({
-    ...experienceInfo,
-  })
+    setExperienceInfo({
+      ...experienceInfo,
+    })
 
-  setExperienceDatas({
-    datas: {
-      ...experienceDatas.datas,
-      [experienceInfo.id]: experienceInfo,
-    },
-  })
-
-
-},[]);
+    setExperienceDatas({
+      datas: {
+        ...experienceDatas.datas,
+        [experienceInfo.id]: experienceInfo,
+      },
+    })
 
 
+  },[]);
+
+
+  const resultRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => resultRef.current,
+  });
 
 
   return(
@@ -100,11 +107,13 @@ useEffect(() => {
           experienceInfo={experienceInfo}
           setExperienceInfo={setExperienceInfo}
           experienceDatas={experienceDatas}
-          setExperienceDatas={setExperienceDatas}/>
+          setExperienceDatas={setExperienceDatas}
+          handlePrint={handlePrint}/>
         <Result 
           generalInfo={generalInfo}
           educationInfo={educationDatas}
-          experienceInfo={experienceDatas}/> {/* Changed this line */}
+          experienceInfo={experienceDatas}
+          ref={resultRef}/> {/* Changed this line */}
       </div>
       <Footer/>
     </>
