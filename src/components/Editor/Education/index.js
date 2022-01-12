@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./style.css";
 
 function Education(props) {
@@ -10,16 +10,17 @@ function Education(props) {
             ...educationInfo,
             [e.target.name]: value,
         });
-    }
 
-    useEffect(() => {
         setEducationDatas({
             datas: {
                 ...educationDatas.datas,
-                [educationInfo.id]: educationInfo,
+                [educationInfo.id]: {
+                    ...educationInfo,
+                    [e.target.name]: value,
+                },
             },
         });
-    },[educationInfo]);
+    }
 
     return(
         <>

@@ -1,5 +1,4 @@
 import React from "react";
-import { useEffect } from "react/cjs/react.development";
 import "./style.css";
 
 function Experience(props) {
@@ -11,16 +10,17 @@ function Experience(props) {
             ...experienceInfo,
             [e.target.name]: value,
         });
-    }
 
-    useEffect(() => {
         setExperienceDatas({
             datas: {
                 ...experienceDatas.datas,
-                [experienceInfo.id]: experienceInfo,
+                [experienceInfo.id]: {
+                    ...experienceInfo,
+                    [e.target.name]: value,
+                },
             },
         });
-    }, [experienceInfo])
+    }
 
     return(
         <section className="informationBox">

@@ -23,7 +23,8 @@ function App() {
 
 
 
-  
+  const initEduId = uniqid();
+  const initEduId2 = uniqid();
   const [educationInfo, setEducationInfo] = useState({
     schoolName: "",
     city: "",
@@ -32,16 +33,29 @@ function App() {
     from: "",
     to: "",
     additionalInfo: "",
-    id: uniqid(),
-    id2: uniqid(),
+    id: initEduId,
+    id2: initEduId2,
   });
 
-
   const [educationDatas, setEducationDatas] = useState({
-    datas: {},
+    datas: {
+      [initEduId]: {
+        schoolName: "",
+        city: "",
+        degree: "",
+        subject: "",
+        from: "",
+        to: "",
+        additionalInfo: "",
+        id: initEduId,
+        id2: initEduId2,
+      }
+    },
   })
 
 
+  const initExpId = uniqid();
+  const initExpId2 = uniqid();
   const [experienceInfo, setExperienceInfo] = useState({
     companyName: "",
     position: "",
@@ -49,17 +63,28 @@ function App() {
     from: "",
     to: "",
     additionalInfo: "",
-    id: uniqid(),
-    id2: uniqid(),
+    id: initExpId,
+    id2: initExpId2,
   });
 
   const [experienceDatas, setExperienceDatas] = useState({
-    datas: {},
+    datas: {
+      [initExpId]: {
+        companyName: "",
+        position: "",
+        city: "",
+        from: "",
+        to: "",
+        additionalInfo: "",
+        id: initExpId,
+        id2: initExpId2,
+      }
+    },
   })
 
 
 
-  useEffect(() => {
+  /* useEffect(() => {
     console.log("Init render");
     setEducationInfo({
       ...educationInfo,
@@ -84,7 +109,7 @@ function App() {
     })
 
 
-  },[]);
+  },[]); */
 
 
   const resultRef = useRef();

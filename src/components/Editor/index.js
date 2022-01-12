@@ -4,13 +4,14 @@ import General from "./General";
 import Education from "./Education";
 import Experience from "./Experience";
 import "./style.css";
-import { useEffect } from "react/cjs/react.development";
 
 function Editor(props) {
     const {generalInfo, setGeneralInfo, educationInfo, setEducationInfo, educationDatas, setEducationDatas, experienceInfo, setExperienceInfo, experienceDatas, setExperienceDatas, handlePrint} = props;
 
 
     function AddEducationSection(e) {
+        const uniqueId = uniqid();
+        const uniqueId2 = uniqid();
         setEducationInfo({
             schoolName: "",
             city: "",
@@ -19,23 +20,33 @@ function Editor(props) {
             from: "",
             to: "",
             additionalInfo: "",
-            id: uniqid(),
-            id2: uniqid(),
+            id: uniqueId,
+            id2: uniqueId2,
+        })
+
+        setEducationDatas({
+            datas: {
+                ...educationDatas.datas,
+                [uniqueId]: {
+                    schoolName: "",
+                    city: "",
+                    degree: "",
+                    subject: "",
+                    from: "",
+                    to: "",
+                    additionalInfo: "",
+                    id: uniqueId,
+                    id2: uniqueId2,
+                },
+            }
         })
         
     }
 
-    useEffect(() => {
-        setEducationDatas({
-            datas: {
-                ...educationDatas.datas,
-                [educationInfo.id]: educationInfo,
-            }
-        })
-    }, [educationInfo])
-
 
     function AddExperienceSection(e) {
+        const uniqueId = uniqid();
+        const uniqueId2 = uniqid();
         setExperienceInfo({
             companyName: "",
             position: "",
@@ -43,19 +54,27 @@ function Editor(props) {
             from: "",
             to: "",
             additionalInfo: "",
-            id: uniqid(),
-            id2: uniqid(),
+            id: uniqueId,
+            id2: uniqueId2,
         })
-    }
 
-    useEffect(() => {
         setExperienceDatas({
             datas: {
                 ...experienceDatas.datas,
-                [experienceInfo.id]: experienceInfo,
+                [uniqueId]: {
+                    companyName: "",
+                    position: "",
+                    city: "",
+                    from: "",
+                    to: "",
+                    additionalInfo: "",
+                    id: uniqueId,
+                    id2: uniqueId2,
+                },
             }
         })
-    }, [experienceInfo])
+
+    }
 
 
     function handleEducationDeletion(e) {
