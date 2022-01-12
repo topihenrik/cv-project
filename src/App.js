@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-import uniqid from "uniqid";
 import Header from "./components/Header";
 import Editor from "./components/Editor"
 import Result from "./components/Result";
@@ -17,39 +16,15 @@ function App() {
     address: "",
     additionalInfo: "",
     picture: "",
+    headerColor: "#20639B",
   });
 
-  /* const initEduId = uniqid(); */
   const [educationDatas, setEducationDatas] = useState({
-    datas: {
-      /* [initEduId]: {
-        schoolName: "",
-        city: "",
-        degree: "",
-        subject: "",
-        from: "",
-        to: "",
-        additionalInfo: "",
-        id: initEduId,
-        id2: uniqid(),
-      } */
-    },
+    datas: {}
   })
 
- /*  const initExpId = uniqid(); */
   const [experienceDatas, setExperienceDatas] = useState({
-    datas: {
-      /* [initExpId]: {
-        companyName: "",
-        position: "",
-        city: "",
-        from: "",
-        to: "",
-        additionalInfo: "",
-        id: initExpId,
-        id2: uniqid(),
-      } */
-    },
+    datas: {}
   })
 
   const resultRef = useRef();

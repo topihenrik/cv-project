@@ -9,7 +9,7 @@ const Result = React.forwardRef((props, ref) => {
     return(
         <div className="resultBox">
             <div ref={ref} className="pdfBox">
-                <div className="info10">
+                <div className="info10" style={{ backgroundColor: generalInfo.headerColor }}>
                     <h1 className="h1Name">{(generalInfo.firstName===""?"John":generalInfo.firstName) + " " + (generalInfo.lastName===""?"Doe":generalInfo.lastName)}</h1>
                     <h2 className="h2Title">{generalInfo.title===""?"Title":generalInfo.title}</h2>
                 </div>
