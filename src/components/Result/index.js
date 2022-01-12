@@ -4,9 +4,6 @@ import EducationResult from "./EducationResult";
 import ExperienceResult from "./ExperienceResult";
 import "./style.css";
 
-
-/* function Result(props) */
-
 const Result = React.forwardRef((props, ref) => {
     const {generalInfo, educationInfo, experienceInfo} = props;
     return(
@@ -53,15 +50,6 @@ const Result = React.forwardRef((props, ref) => {
                                 </section>)
                             })}
                         </ul>
-
-                        {/* <ul className="infoUl">
-                            {experienceInfo.datas.map((data) => {
-                                return(
-                                <section key={data.id} className="infoSection">
-                                    <ExperienceResult experienceInfo={data}/>
-                                </section>)
-                            })}
-                        </ul> */}
                     </div>
                 </div>
             </div>

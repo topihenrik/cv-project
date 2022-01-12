@@ -1,9 +1,6 @@
 import React from "react";
 import { useEffect } from "react/cjs/react.development";
-import uniqid from "uniqid";
 import "./style.css";
-
-
 
 function Experience(props) {
     const {experienceInfo, setExperienceInfo, experienceDatas, setExperienceDatas, handleExperienceDeletion} = props;
@@ -16,7 +13,6 @@ function Experience(props) {
         });
     }
 
-
     useEffect(() => {
         setExperienceDatas({
             datas: {
@@ -25,21 +21,6 @@ function Experience(props) {
             },
         });
     }, [experienceInfo])
-
-
-
-    /* function addData() {
-        setExperienceInfo({
-            datas: [
-                ...experienceInfo.datas,
-                experienceInfo.data,
-            ],
-            data: {
-                ...experienceInfo.data,
-                id: uniqid(),
-            }
-        })
-    } */
 
     return(
         <section className="informationBox">

@@ -1,14 +1,8 @@
 import React, { useEffect } from "react";
-import { useState } from "react/cjs/react.development";
-import uniqid from "uniqid";
 import "./style.css";
-
-
 
 function Education(props) {
     const {educationInfo, setEducationInfo, educationDatas, setEducationDatas, handleEducationDeletion} = props;
-
-    /* console.log(educationInfo); */
 
     function handleChange(e) {
         const value = e.target.value;
@@ -16,9 +10,6 @@ function Education(props) {
             ...educationInfo,
             [e.target.name]: value,
         });
-
-
-        
     }
 
     useEffect(() => {
@@ -29,13 +20,6 @@ function Education(props) {
             },
         });
     },[educationInfo]);
-
-    
-    
-    
-
-
-
 
     return(
         <>

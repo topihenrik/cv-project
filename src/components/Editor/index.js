@@ -58,26 +58,14 @@ function Editor(props) {
     }, [experienceInfo])
 
 
-
-
-    function handleEducationDeletion(e) /* Deletion */ {
+    function handleEducationDeletion(e) {
         const value = e.target.value;
-
-        console.log("Before filter:");
-        console.log(educationDatas.datas);
-
         const filteredDatas = Object.keys(educationDatas.datas)
         .filter(key => ![value].includes(key))
         .reduce((obj, key) => {
           obj[key] = educationDatas.datas[key];
           return obj;
         }, {});
-
-
-        console.log("[educationDatas.datas] After filter:");
-        console.log(educationDatas.datas);
-        console.log("[filteredDatas] After filter:");
-        console.log(filteredDatas);
 
         setEducationDatas({
             datas: {
@@ -86,24 +74,14 @@ function Editor(props) {
         })
     }
 
-    function handleExperienceDeletion(e) /* Deletion */ {
+    function handleExperienceDeletion(e) {
         const value = e.target.value;
-
-        console.log("Before filter:");
-        console.log(experienceDatas.datas);
-
         const filteredDatas = Object.keys(experienceDatas.datas)
         .filter(key => ![value].includes(key))
         .reduce((obj, key) => {
           obj[key] = experienceDatas.datas[key];
           return obj;
         }, {});
-
-
-        console.log("[educationDatas.datas] After filter:");
-        console.log(experienceDatas.datas);
-        console.log("[filteredDatas] After filter:");
-        console.log(filteredDatas);
 
         setExperienceDatas({
             datas: {
