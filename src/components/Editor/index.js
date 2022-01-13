@@ -91,6 +91,7 @@ function Editor(props) {
             address: "",
             additionalInfo: "",
             picture: "",
+            headerColor: "#20639B",
         })
         setEducationDatas({
             datas: {},
