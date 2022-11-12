@@ -8,7 +8,6 @@
     src: url("./fonts/Montserrat-Bold.ttf") format("truetype");
 }
 
-
 html, body, #root {
     height: 100%;
 }
@@ -22,8 +21,6 @@ body {
     font-family: "Montserrat-Regular";
     font-weight: 400;
 }
-
-
 
 #root {
     display: flex;
